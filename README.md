@@ -1,0 +1,2 @@
+# hackerNews
+react + typescript practice
