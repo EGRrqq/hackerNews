@@ -12,7 +12,7 @@ interface SingleNewsProps {
 }
 
 const SingleNews: FC<SingleNewsProps> = ({ id, i }) => {
-    const [news, setNews] = useState<INews>({id: 0, title: '', score: 0, by: '', time: 0})
+    const [news, setNews] = useState<INews>({id: 0, title: '', score: 0, by: '', time: 0, url: ''})
 
     useEffect(() => {
       newsService.getNews(id).then(data => setNews(data))
@@ -24,7 +24,9 @@ const SingleNews: FC<SingleNewsProps> = ({ id, i }) => {
             <thead>
                 <tr>
                     <th>{i}.</th>
-                    <th>{news.title}</th>
+                    <th>
+                        <a href={news.url}>{news.title}</a>
+                    </th>
                 </tr>
             </thead>
             <tbody>

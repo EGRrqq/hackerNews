@@ -2,10 +2,13 @@ import { useState, useEffect } from "react"
 import newsService from '../../services/news'
 import SingleNews from "./SingleNews"
 
+import { Link, Route } from '@tanstack/react-router'
+import { rootRoute } from '../__root'
+
 import styles from './styles.module.css'
 import classNames from "classnames";
 
-const NewsList = () => {
+const NewsListPage = () => {
     const [newsId, setNewsId] = useState<Array<number>>([])
 
     useEffect(() => {
@@ -24,4 +27,8 @@ const NewsList = () => {
     )
 }
 
-export default NewsList
+export const indexRoute = new Route({
+    getParentRoute: () => rootRoute,
+    path: '/',
+    component: NewsListPage,
+})

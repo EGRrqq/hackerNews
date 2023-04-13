@@ -4,4 +4,5 @@ export interface INews {
     score: number;
     by: string;
     time: number;
+    url: string;
 }
