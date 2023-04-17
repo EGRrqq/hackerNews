@@ -2,12 +2,12 @@ import { ReactRouter } from '@tanstack/react-router'
 
 import { rootRoute } from './routes/__root'
 import { indexRoute } from './routes/NewsListPage'
-import { helloRoute } from './routes/NewsDataPage'
+import { newsDataRoute } from './routes/NewsDataPage'
 
 // import Spinner from './components/Spinner'
 
 const routeTree = rootRoute.addChildren([
-  indexRoute, helloRoute
+  indexRoute, newsDataRoute
 ])
 
 export const router = new ReactRouter({

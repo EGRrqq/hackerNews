@@ -13,7 +13,6 @@ export const rootRoute = new RootRoute({
               {(
                 [
                   ['/', 'News'],
-                  ['/hello', 'Hello'],
                 ] as const
               ).map(([to, label]) => {
                 return (

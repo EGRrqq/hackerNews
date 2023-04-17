@@ -19,7 +19,7 @@ const NewsListPage = () => {
     return (
         <>  
             {newsId.slice(0, 10).map((item, i)=> 
-                <ul key={item} className={classNames(styles.ul)}>
+                <ul key={item}>
                     <li><SingleNews id={item} i={i + 1} /></li>
                 </ul>
             )}
