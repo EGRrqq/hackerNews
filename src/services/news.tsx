@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { INews } from "../types/types";
+import { INews, IComment } from "../types/types";
 
 const baseURL = 'https://hacker-news.firebaseio.com/v0/'
 
@@ -9,8 +9,8 @@ const getNewsId = async () => {
     return response.data
 }
 
-const getNews = async (id: number) => {
-    const response: AxiosResponse<INews> = await axios.get(`${baseURL}/item/${id}.json`)
+const getNews = async (id: number | string) => {
+    const response: AxiosResponse<INews & IComment> = await axios.get(`${baseURL}/item/${id}.json`)
     
     return response.data
 }

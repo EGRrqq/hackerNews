@@ -1,16 +1,5 @@
-.ul {
+.data {
     display: flex;
-    flex-direction: column-reverse;
-    align-content: space-between;
-    flex-wrap: wrap;
-    background-color: aliceblue;
-    color: rgb(20, 26, 77);
-    box-shadow: 0px -4px 0px 0px rgba(0, 0, 0, 0.3) inset,
-                0 4px 5px 0 rgba(0, 0, 0, 0.57);
-    min-width: 50vw;
-}
-
-.li {
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    color: aliceblue;
 }

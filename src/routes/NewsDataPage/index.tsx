@@ -10,7 +10,7 @@ import classNames from "classnames";
 
 const NewsDataPage = () => {
     const [news, setNews] = useState<INews>({ id: 0, title: '', score: 0, by: '', time: 0, url: '', kids: [], type: '' })
-    const [com, setCom] = useState<Array<Number>>([])
+    const [com, setCom] = useState<number[]>([])
     const newsMatch = useMatch({from: '/$itemId'})
 
     useEffect(() => {
@@ -21,10 +21,10 @@ const NewsDataPage = () => {
 
     return (
         <>
-            {news.title}
+            <span className={classNames(styles.data)}>{news.title}</span>
             {com.map((it, i) =>
-                        <ul className={classNames(styles.ul)} key={i}>
-                            <li className={classNames(styles.li)} ><SingleComment id={it} /></li>
+                        <ul key={i}>
+                            <li style={{ margin: 5 }}><SingleComment id={it} /></li>
                         </ul>
                     )}
         </>

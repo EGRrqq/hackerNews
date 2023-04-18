@@ -2,14 +2,14 @@ import { useState, useEffect } from "react"
 import newsService from '../../services/news'
 import SingleNews from "./SingleNews"
 
-import { Link, Route } from '@tanstack/react-router'
+import { Route } from '@tanstack/react-router'
 import { rootRoute } from '../__root'
 
 import styles from './styles.module.css'
 import classNames from "classnames";
 
 const NewsListPage = () => {
-    const [newsId, setNewsId] = useState<Array<number>>([])
+    const [newsId, setNewsId] = useState<number[]>([])
 
     useEffect(() => {
       newsService.getNewsId().then(data => setNewsId(data))
@@ -20,7 +20,7 @@ const NewsListPage = () => {
         <>  
             {newsId.slice(0, 10).map((item, i)=> 
                 <ul key={item}>
-                    <li><SingleNews id={item} i={i + 1} /></li>
+                    <li style={{ margin: 5 }}><SingleNews id={item} i={i + 1} /></li>
                 </ul>
             )}
         </>

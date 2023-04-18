@@ -6,11 +6,14 @@
 body {
   display: flex;
   place-items: center;
+  justify-content: center;
   background-image: radial-gradient(50% 99%, #25274a 10%, #333666 99%);
 }
 
 #root {
   display: flex;
+  place-items: center;
+  justify-content: center;
 }
 
 a {
@@ -20,9 +23,20 @@ a {
 
 ul {
   display: flex;
-  flex-wrap: wrap-reverse;
-  list-style-type: none;
-  white-space: nowrap;
-  margin: 0;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: aliceblue;
+  color: rgb(20, 26, 77);
+  box-shadow: 0px -4px 0px 0px rgba(0, 0, 0, 0.3) inset,
+              0 4px 5px 0 rgba(0, 0, 0, 0.57);
+  min-width: 80vw;
+  max-width: 80vw;
   padding: 0;
+  border: 0;
+  overflow: hidden;
+  list-style-type: none;
+}
+
+tr {
+  display: flex;
 }

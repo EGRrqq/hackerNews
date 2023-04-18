@@ -1,12 +1,12 @@
 import { useState, useEffect, FC } from "react"
 import newsService from '../../services/news'
 import { INews } from "../../types/types";
+import moment from "moment";
+
+import { Link } from "@tanstack/react-router";
 
 import styles from './styles.module.css'
 import classNames from "classnames";
-import moment from "moment";
-import { Link, Route, useParams } from "@tanstack/react-router";
-import { rootRoute } from "../__root";
 
 interface SingleNewsProps {
     id: number;
@@ -22,14 +22,14 @@ const SingleNews: FC<SingleNewsProps> = ({ id, i }) => {
     }, [])
 
     return (
-      <table className={classNames(styles.table)}>
+      <table>
             <thead>
                 <tr>
                     <th>{i}.</th>
                     <th>
                         <Link 
                             to='/$itemId' 
-                            params={{ itemId: news.id }}
+                            params={{ itemId: String(news.id) }}
                             >
                             {news.title}
                         </Link>

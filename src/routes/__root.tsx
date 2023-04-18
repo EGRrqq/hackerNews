@@ -1,18 +1,28 @@
 import { Link, Outlet, RootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
+// import styles from './styles.module.css'
+// import classNames from "classnames";
+
 export const rootRoute = new RootRoute({
   component: () => {
     return (
       <>
         <div>
-          <div>
+          {/* <div>
             <h1>Hacker News</h1>
-          </div>
-          <div>
+          </div> */}
+          <div style={{
+               display: 'flex',
+               flexDirection: 'row',
+               minWidth: '80vw',
+               maxWidth: '80vw',
+               color: 'aliceblue',
+               backgroundColor: '#905050',
+          }}>
               {(
                 [
-                  ['/', 'News'],
+                  ['/', 'Hacker News'],
                 ] as const
               ).map(([to, label]) => {
                 return (
@@ -26,9 +36,12 @@ export const rootRoute = new RootRoute({
                           // exact: to === '.',
                         }
                       }
-                      style={{color: 'aliceblue'}}
+                      style={{
+                        display: 'flex',
+                        margin: 10,
+                      }}
                       // Make "active" links bold
-                      activeProps={{ color: 'black' }}
+                      // activeProps={{ color: 'black' }}
                     >
                       {label}
                     </Link>
