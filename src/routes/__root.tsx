@@ -1,5 +1,7 @@
 import { Link, Outlet, RootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import Spinner from '../components/Spinner'
+import { useLoaderClient } from '@tanstack/react-loaders'
 
 // import styles from './styles.module.css'
 // import classNames from "classnames";
@@ -14,6 +16,7 @@ export const rootRoute = new RootRoute({
           </div> */}
           <div style={{
                display: 'flex',
+               placeItems: 'center',
                flexDirection: 'row',
                minWidth: '80vw',
                maxWidth: '80vw',
@@ -48,6 +51,7 @@ export const rootRoute = new RootRoute({
                   </div>
                 )
               })}
+              <Spinner />
             </div>
             <div>
               {/* Render our first route match */}

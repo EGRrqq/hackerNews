@@ -4,7 +4,7 @@ import { rootRoute } from './routes/__root'
 import { indexRoute } from './routes/NewsListPage'
 import { newsDataRoute } from './routes/NewsDataPage'
 
-// import Spinner from './components/Spinner'
+import Spinner from './components/Spinner'
 
 const routeTree = rootRoute.addChildren([
   indexRoute, newsDataRoute
@@ -12,11 +12,11 @@ const routeTree = rootRoute.addChildren([
 
 export const router = new ReactRouter({
   routeTree,
-//   defaultPendingComponent: () => (
-//     <div>
-//       <Spinner />
-//     </div>
-//   ),
+  defaultPendingComponent: () => (
+    <div>
+      <Spinner />
+    </div>
+  ),
 //   onRouteChange: () => {},
 })
 
