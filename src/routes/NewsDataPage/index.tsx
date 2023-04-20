@@ -14,7 +14,7 @@ const NewsDataPage = () => {
     const [com, setCom] = useState<number[]>([])
     
     const newsMatch = useMatch({from: '/$itemId'})
-    const { ref, counter } = useFetching(0, 25, 30)
+    const { ref, counter } = useFetching(0, 10, 30)
     
     useEffect(() => {
       newsService.getNews(newsMatch.params.itemId).then(data => setCom(data.kids))

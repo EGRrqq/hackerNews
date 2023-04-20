@@ -7,6 +7,7 @@ export interface IComment {
     text: string;
     type: string;
     deleted?: boolean;
+    dead?: boolean;
 }
 
 export interface INews {

@@ -8,36 +8,54 @@ import { options } from '../../utils/htmlParserOptions';
 
 import styles from './styles.module.css'
 import classNames from "classnames";
+import ChildComments from './ChildComments';
 
 interface NewsCommentProps {
     id: number;
 }
 
 const SingleComment: FC<NewsCommentProps> = ({ id }) => {
-    const [singlecom, setSingleCom] = useState<IComment>({ by: '', id: 0, kids: [], time: 0, parent: 0, text: '', type: ''  })
-//  id: 0, kids: [], time: 0, parent: 0, text: '', type: '' 
+    const [singleCom, setSingleCom] = useState<IComment>({ by: '', id: 0, kids: [], time: 0, parent: 0, text: '', type: ''  })
+    const [popup, setPopup] = useState<boolean>(false)
+
     useEffect(() => {
       newsService.getNews(id).then(data => setSingleCom(data))
       console.log('fourth useEffect render counter');
     }, [])
 
-    // if (!singlecom.deleted) { return <>{singlecom.text}</>}
     return (
-        <table className={classNames(styles.zero)} >
-            <thead>
-                <tr className={classNames(styles.trCom)} >
-                    <th>{singlecom.by}</th>
-                    <th>{moment(singlecom.time, 'X').fromNow()}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr className={classNames(styles.trCom)} >
-                    <td className={classNames(styles.td)} >{parse(singlecom.text, options)}</td>
-                </tr>
-            </tbody>
-        </table>
+        <>
+            {!singleCom.deleted && !singleCom.dead
+                ?
+                <table className={classNames(styles.zero)} >
+                    <thead>
+                        <tr className={classNames(styles.trCom)} >
+                            <th>{singleCom.by}</th>
+                            <th>{moment(singleCom.time, 'X').fromNow()}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className={classNames(styles.trCom)} >
+                            <td className={classNames(styles.td)} >{parse(singleCom.text, options)}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i className={classNames(styles.arrow, styles.down)} onClick={() => setPopup(!popup)}></i>{' '}{singleCom.kids ? singleCom.kids.length : 0} replies
+                                {popup && singleCom.kids && 
+                                    singleCom.kids.map((childId, i) => 
+                                        <ul key={childId}>
+                                            <li><ChildComments id={childId} /></li>
+                                        </ul>
+                                    )
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                : ''
+            }
+        </>
     )
-
 }
 
 export default SingleComment
