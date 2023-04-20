@@ -1,18 +1,17 @@
-import { useState, useEffect, useRef } from "react"
-import newsService from '../../services/news'
-import SingleNews from "./SingleNews"
-import { useInView } from "react-intersection-observer"
-
+import { useState, useEffect } from "react"
+import { useFetching } from "../../hooks/useFetching"
 import { Route } from '@tanstack/react-router'
 import { rootRoute } from '../__root'
 
+import newsService from '../../services/news'
+import SingleNews from "./SingleNews"
+
 import styles from './styles.module.css'
 import classNames from "classnames";
-import { useFetching } from "../../hooks/useFetching"
 
 const NewsListPage = () => {
     const [newsId, setNewsId] = useState<number[]>([])
-    const { ref, counter } = useFetching(25, 50, 100)
+    const { ref, counter } = useFetching(0, 25, 500)
 
     useEffect(() => {
         newsService.getNewsId().then(data => setNewsId(data))
@@ -22,18 +21,9 @@ const NewsListPage = () => {
     
     return (
         <>  
-
-            {/* {loading 
-                ? <Spinner /> 
-                : newsId.slice(0, 10).map((itemId, i)=> 
-                    <ul key={itemId}>
-                        <li style={{ margin: 5 }}><SingleNews id={itemId} i={i + 1} /></li>
-                    </ul>)
-            } */}
-
             {newsId.slice(0, counter).map((itemId, i)=> 
                     <ul key={itemId}>
-                        <li style={{ margin: 5 }}><SingleNews id={itemId} i={i + 1} /></li>
+                        <li className={classNames(styles.li)}><SingleNews id={itemId} i={i + 1} /></li>
                     </ul>)
             }
 

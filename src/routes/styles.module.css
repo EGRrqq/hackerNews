@@ -1,0 +1,15 @@
+.navbar {
+    display: flex;
+    place-items: center;
+    flex-direction: row;
+    min-width: 80vw;
+    max-width: 80vw;
+    color: aliceblue;
+    background-color: #905050;
+}
+
+.link {
+    display: flex;
+    margin: 10px;
+    text-decoration: none;
+}

@@ -1,10 +1,9 @@
 import { Link, Outlet, RootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import Spinner from '../components/Spinner'
-import { useLoaderClient } from '@tanstack/react-loaders'
 
-// import styles from './styles.module.css'
-// import classNames from "classnames";
+import styles from './styles.module.css'
+import classNames from "classnames";
 
 export const rootRoute = new RootRoute({
   component: () => {
@@ -14,15 +13,7 @@ export const rootRoute = new RootRoute({
           {/* <div>
             <h1>Hacker News</h1>
           </div> */}
-          <div style={{
-               display: 'flex',
-               placeItems: 'center',
-               flexDirection: 'row',
-               minWidth: '80vw',
-               maxWidth: '80vw',
-               color: 'aliceblue',
-               backgroundColor: '#905050',
-          }}>
+          <div className={classNames(styles.navbar)}>
               {(
                 [
                   ['/', 'Hacker News'],
@@ -39,10 +30,7 @@ export const rootRoute = new RootRoute({
                           // exact: to === '.',
                         }
                       }
-                      style={{
-                        display: 'flex',
-                        margin: 10,
-                      }}
+                      className={classNames(styles.link)}
                       // Make "active" links bold
                       // activeProps={{ color: 'black' }}
                     >

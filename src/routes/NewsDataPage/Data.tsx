@@ -19,19 +19,22 @@ const Data: FC<DataProps> = ({ id }) => {
     }, [])
 
     return (
-      <table className={classNames(styles.table)} style={{ height: 100}}>
+      <table className={classNames(styles.table, styles.zero)} style={{ height: 100}}>
             <thead>
-                <tr style={{ marginLeft: 5, marginTop: 5 }}>
+                <tr className={classNames(styles.trData)}>
                     <th>
-                        <a href={news.url} target='_blank'>{news.title}</a>
+                        <a href={news.url} target='_blank' style={{ textDecoration: 'none' }}>{news.title}</a>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr style={{ marginLeft: 5, marginBottom: 5 }}>
+                <tr className={classNames(styles.trData)}>
                     <td>by {news.by} </td>
                     <td>{moment(news.time, 'X').fromNow()} | </td>
                     <td>{news.kids.length} comments</td>
+                </tr>
+                <tr>
+                    {/* <td>comments:</td> */}
                 </tr>
             </tbody>
       </table>

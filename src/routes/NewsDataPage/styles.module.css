@@ -4,6 +4,12 @@
     color: aliceblue;
 }
 
+.zero {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
 .table {
     display: flex;
     flex-direction: column;
@@ -14,8 +20,25 @@
                 0 4px 5px 0 rgba(0, 0, 0, 0.57);
     min-width: 80vw;
     max-width: 80vw;
-    padding: 0;
-    border: 0;
     overflow: hidden;
     list-style-type: none;
+}
+
+.trCom {
+    padding: 0px;
+    margin: 5px 0px; 
+}
+
+.trData {
+    padding: 0px;
+    margin: 15px;
+}
+
+.td {
+    display: flex;
+    flex-direction: column; 
+}
+
+.li {
+    margin: 7px;
 }

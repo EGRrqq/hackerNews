@@ -30,6 +30,7 @@ const SingleNews: FC<SingleNewsProps> = ({ id, i }) => {
                         <Link 
                             to='/$itemId' 
                             params={{ itemId: String(news.id) }}
+                            className={classNames(styles.link)}
                             >
                             {news.title}
                         </Link>

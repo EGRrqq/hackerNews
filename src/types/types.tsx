@@ -1,4 +1,5 @@
 export interface IComment {
+    by: string;
     id: number;
     kids: Array<number>;
     time: number;
