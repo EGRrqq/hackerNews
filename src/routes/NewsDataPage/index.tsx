@@ -1,34 +1,32 @@
-import { Route, useMatch } from '@tanstack/react-router'
+import { Route, useMatch, useParams } from '@tanstack/react-router'
 import { rootRoute } from '../__root'
-import { useEffect, useState } from 'react'
 import { useFetching } from '../../hooks/useFetching'
 
-import newsService from '../../services/news'
-import SingleComment from './Comments'
+import SingleComment from './SingleComment'
 import Data from './Data'
 
 import styles from './styles.module.css'
 import classNames from "classnames";
+import { SingleNewsAPI } from '../../services/SingleNewsService'
+import { IComment } from '../../types/types'
+
 
 const NewsDataPage = () => {
-    const [com, setCom] = useState<number[]>([])
-    
-    const newsMatch = useMatch({from: '/$itemId'})
+    const { itemId } = useParams()
+    const { data: news, error, isLoading } = SingleNewsAPI.useFetchSingleNewsQuery(Number(itemId))
     const { ref, counter } = useFetching(0, 10, 30)
-    
-    useEffect(() => {
-      newsService.getNews(newsMatch.params.itemId).then(data => setCom(data.kids))
-      console.log('third useEffect render counter');
-    }, [])
 
     return (
         <>
-            <Data id={newsMatch.params.itemId} />
+            {isLoading && <p>loading...</p>}
+            {error && <p>sadcat</p>}
 
-            {com.slice(0, counter).map(comId =>
-                        <ul key={comId}>
-                            <li className={classNames(styles.li)}><SingleComment id={comId} /></li>
-                        </ul>)
+            <Data news={news} />
+
+            {news && news?.kids.slice(0, counter).map((itemId) => 
+                <ul key={itemId}>
+                    <li className={classNames(styles.li)}><SingleComment id={itemId} /></li>
+                </ul>)
             }
 
             <div ref={ref} style={{height: 20, background: 'red'}}></div>

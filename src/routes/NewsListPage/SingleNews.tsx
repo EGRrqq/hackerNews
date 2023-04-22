@@ -1,12 +1,13 @@
-import { useState, useEffect, FC } from "react"
-import newsService from '../../services/news'
-import { INews } from "../../types/types";
+import { FC } from "react"
+
 import moment from "moment";
 
 import { Link } from "@tanstack/react-router";
 
 import styles from './styles.module.css'
 import classNames from "classnames";
+import Spinner from "../../components/Spinner";
+import { SingleNewsAPI } from "../../services/SingleNewsService";
 
 interface SingleNewsProps {
     id: number;
@@ -14,37 +15,36 @@ interface SingleNewsProps {
 }
 
 const SingleNews: FC<SingleNewsProps> = ({ id, i }) => {
-    const [news, setNews] = useState<INews>({id: 0, title: '', score: 0, by: '', time: 0, url: '', kids: [], type: ''})
-
-    useEffect(() => {
-      newsService.getNews(id).then(data => setNews(data))
-      console.log('second useEffect render counter');
-    }, [])
+    const { data: news, error, isLoading } = SingleNewsAPI.useFetchSingleNewsQuery(id)
 
     return (
-      <table>
-            <thead>
-                <tr>
-                    <th>{i}.</th>
-                    <th>
-                        <Link 
-                            to='/$itemId' 
-                            params={{ itemId: String(news.id) }}
-                            className={classNames(styles.link)}
-                            >
-                            {news.title}
-                        </Link>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{news.score} points</td>
-                    <td>by {news.by}</td>
-                    <td>{moment(news.time, 'X').fromNow()}</td>
-                </tr>
-            </tbody>
-      </table>
+        <>
+            {news && 
+                <table>
+                      <thead>
+                          <tr>
+                              <th>{i}.</th>
+                              <th>
+                                  <Link 
+                                      to='/$itemId' 
+                                      params={{ itemId: String(news?.id) }}
+                                      className={classNames(styles.link)}
+                                      >
+                                      {news?.title}
+                                  </Link>
+                              </th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>{news?.score} points</td>
+                              <td>by {news?.by}</td>
+                              <td>{moment(news?.time, 'X').fromNow()}</td>
+                          </tr>
+                      </tbody>
+                </table>
+            }
+        </>
     )
 }
 

@@ -8,7 +8,7 @@
     border: 2px dashed aliceblue;
 }
 
-.rotateScaleUp {
+.rotateScaleUp:active {
 	animation: rotateScaleUp 0.65s ease-out both;
 }
 

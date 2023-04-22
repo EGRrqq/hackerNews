@@ -1,27 +1,28 @@
-import { useState, useEffect } from "react"
 import { useFetching } from "../../hooks/useFetching"
 import { Route } from '@tanstack/react-router'
 import { rootRoute } from '../__root'
 
-import newsService from '../../services/news'
 import SingleNews from "./SingleNews"
 
 import styles from './styles.module.css'
 import classNames from "classnames";
+import Spinner from "../../components/Spinner"
+
+import { NewsIdAPI } from "../../services/NewsIdService"
 
 const NewsListPage = () => {
-    const [newsId, setNewsId] = useState<number[]>([])
+    const {data: newsId, error, isLoading, refetch} = NewsIdAPI.useFetchAllIDQuery(0) 
     const { ref, counter } = useFetching(0, 25, 500)
-
-    useEffect(() => {
-        newsService.getNewsId().then(data => setNewsId(data))
-        console.log('useEffect render counter');
-    }, [])
-
+    console.log('newsid', newsId);
     
+
     return (
         <>  
-            {newsId.slice(0, counter).map((itemId, i)=> 
+            <button type="button" onClick={() => refetch()}>refetch</button>
+            {/* <Spinner refreshData={refreshData} setRefreshData={setRefreshData} /> */}
+            {isLoading && <p>fetching...</p>}
+            {error && <p>sadcat</p>}
+            {newsId && newsId?.slice(0, counter).map((itemId, i)=> 
                     <ul key={itemId}>
                         <li className={classNames(styles.li)}><SingleNews id={itemId} i={i + 1} /></li>
                     </ul>)

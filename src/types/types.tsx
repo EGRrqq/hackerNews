@@ -1,7 +1,7 @@
 export interface IComment {
     by: string;
     id: number;
-    kids: Array<number>;
+    kids: number[];
     time: number;
     parent: number;
     text: string;
@@ -17,6 +17,6 @@ export interface INews {
     by: string;
     time: number;
     url: string;
-    kids: Array<IComment>;
+    kids: number[];
     type: string;
 }
