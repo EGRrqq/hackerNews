@@ -23,8 +23,8 @@ const NewsDataPage = () => {
     return (
         <>
             <Spinner refetch={refetch} />
-            {isLoading && <p>loading...</p>}
-            {error && <p>sadcat</p>}
+            {isLoading && <h4 className={classNames(styles.load)}>loading...</h4>}
+            {error && <h4 className={classNames(styles.err)}>sadcat</h4>}
 
             {news && <Data news={news} />}
 

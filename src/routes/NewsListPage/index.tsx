@@ -23,8 +23,8 @@ const NewsListPage = () => {
         <>
             <Spinner refetch={refetch} />
 
-            {isLoading && <p>fetching...</p>}
-            {error && <p>sadcat</p>}
+            {isLoading && <h3 className={classNames(styles.load)}>loading...</h3>}
+            {error && <h4 className={classNames(styles.err)}>sadcat</h4>}
 
             {newsId &&
                 newsId?.slice(0, counter).map((itemId, i) => (

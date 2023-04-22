@@ -8,7 +8,7 @@ const Spinner = ({ refetch }) => {
                 className={classNames(styles.button)}
                 onClick={() => refetch()}
             >
-                <p className={classNames(styles.p)}>reload data</p>
+                <h4 className={classNames(styles.p)}>reload data</h4>
                 <span
                     className={classNames(styles.spinner, styles.rotateScaleUp)}
                 ></span>

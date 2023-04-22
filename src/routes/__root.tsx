@@ -9,14 +9,11 @@ export const rootRoute = new RootRoute({
         return (
             <>
                 <div>
-                    {/* <div>
-            <h1>Hacker News</h1>
-          </div> */}
                     <div className={classNames(styles.navbar)}>
                         {([['/', 'Hacker News']] as const).map(
                             ([to, label]) => {
                                 return (
-                                    <div key={to}>
+                                    <h4 key={to}>
                                         <Link
                                             to={to}
                                             activeOptions={
@@ -32,7 +29,7 @@ export const rootRoute = new RootRoute({
                                         >
                                             {label}
                                         </Link>
-                                    </div>
+                                    </h4>
                                 )
                             }
                         )}

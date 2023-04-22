@@ -31,7 +31,7 @@
 
 .trData {
     padding: 0px;
-    margin: 15px;
+    margin: 10px 0 0 10px;
 }
 
 .td {
@@ -57,4 +57,10 @@
 
 .arrow:hover {
     cursor: pointer;
+}
+
+.err, .load {
+    display: flex;
+    justify-content: center;
+    color:aliceblue
 }

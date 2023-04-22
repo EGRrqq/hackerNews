@@ -4,8 +4,8 @@
     flex-direction: row;
     min-width: 80vw;
     max-width: 80vw;
-    color: aliceblue;
-    background-color: #905050;
+    color: rgb(20, 26, 77);
+    background-color: #e48b8b;
 }
 
 .link {
