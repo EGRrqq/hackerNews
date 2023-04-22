@@ -1,14 +1,12 @@
 import styles from './styles.module.css'
-import classNames from "classnames";
+import classNames from 'classnames'
 
 const Spinner = () => {
-
     return (
-        <div 
+        <div
             className={classNames(styles.spinner, styles.rotateScaleUp)}
-            style={{cursor: 'pointer'}}
-        >
-        </div>
+            style={{ cursor: 'pointer' }}
+        ></div>
     )
 }
 

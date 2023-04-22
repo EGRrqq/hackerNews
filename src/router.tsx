@@ -6,22 +6,20 @@ import { newsDataRoute } from './routes/NewsDataPage'
 
 import Spinner from './components/Spinner'
 
-const routeTree = rootRoute.addChildren([
-  indexRoute, newsDataRoute
-])
+const routeTree = rootRoute.addChildren([indexRoute, newsDataRoute])
 
 export const router = new ReactRouter({
-  routeTree,
-  defaultPendingComponent: () => (
-    <div>
-      <Spinner />
-    </div>
-  ),
-//   onRouteChange: () => {},
+    routeTree,
+    defaultPendingComponent: () => (
+        <div>
+            <Spinner />
+        </div>
+    ),
+    //   onRouteChange: () => {},
 })
 
 declare module '@tanstack/react-router' {
-  interface Register {
-    router: typeof router
-  }
+    interface Register {
+        router: typeof router
+    }
 }
