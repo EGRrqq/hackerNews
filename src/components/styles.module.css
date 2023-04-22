@@ -1,3 +1,21 @@
+.container {
+    display: flex;
+}
+
+.button {
+    display: flex;
+    cursor: pointer;
+    background-color: aliceblue;
+    padding: 10px;
+    box-shadow: 0px -4px 0px 0px rgba(0, 0, 0, 0.3) inset,
+        0 4px 5px 0 rgba(0, 0, 0, 0.57);
+}
+
+.p {
+    display: flex;
+    color: rgb(20, 26, 77);
+}
+
 .spinner {
     display: flex;
     place-items: center;
@@ -5,7 +23,8 @@
     height: 15px;
     width: 15px;
     border-radius: 50%;
-    border: 2px dashed aliceblue;
+    border: 2px dashed rgb(20, 26, 77);
+    margin-left: 5px;
 }
 
 .rotateScaleUp {

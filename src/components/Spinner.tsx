@@ -1,12 +1,19 @@
 import styles from './styles.module.css'
 import classNames from 'classnames'
 
-const Spinner = () => {
+const Spinner = ({ refetch }) => {
     return (
-        <div
-            className={classNames(styles.spinner, styles.rotateScaleUp)}
-            style={{ cursor: 'pointer' }}
-        ></div>
+        <div className={classNames(styles.container)}>
+            <span
+                className={classNames(styles.button)}
+                onClick={() => refetch()}
+            >
+                <p className={classNames(styles.p)}>reload data</p>
+                <span
+                    className={classNames(styles.spinner, styles.rotateScaleUp)}
+                ></span>
+            </span>
+        </div>
     )
 }
 

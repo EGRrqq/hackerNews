@@ -8,7 +8,7 @@ import Data from './Data'
 import styles from './styles.module.css'
 import classNames from 'classnames'
 import { SingleNewsAPI } from '../../services/SingleNewsService'
-import { IComment } from '../../types/types'
+import Spinner from '../../components/Spinner'
 
 const NewsDataPage = () => {
     const params: number = useParams()
@@ -16,11 +16,13 @@ const NewsDataPage = () => {
         data: news,
         error,
         isLoading,
+        refetch,
     } = SingleNewsAPI.useFetchSingleNewsQuery(params.itemId)
     const { ref, counter } = useFetching(0, 10, 30)
 
     return (
         <>
+            <Spinner refetch={refetch} />
             {isLoading && <p>loading...</p>}
             {error && <p>sadcat</p>}
 
@@ -35,7 +37,7 @@ const NewsDataPage = () => {
                     </ul>
                 ))}
 
-            <div ref={ref} style={{ height: 20, background: 'red' }}></div>
+            <div ref={ref} style={{ height: 20, background: 'inherit' }}></div>
         </>
     )
 }

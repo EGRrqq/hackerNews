@@ -21,12 +21,11 @@ const NewsListPage = () => {
 
     return (
         <>
-            <button type="button" onClick={() => refetch()}>
-                refetch
-            </button>
-            {/* <Spinner refreshData={refreshData} setRefreshData={setRefreshData} /> */}
+            <Spinner refetch={refetch} />
+
             {isLoading && <p>fetching...</p>}
             {error && <p>sadcat</p>}
+
             {newsId &&
                 newsId?.slice(0, counter).map((itemId, i) => (
                     <ul key={itemId}>
@@ -36,7 +35,7 @@ const NewsListPage = () => {
                     </ul>
                 ))}
 
-            <div ref={ref} style={{ height: 20, background: 'red' }}></div>
+            <div ref={ref} style={{ height: 20, background: 'inherit' }}></div>
         </>
     )
 }

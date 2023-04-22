@@ -1,5 +1,6 @@
 import { SingleNewsAPI } from '../../services/SingleNewsService'
 import { FC, useState } from 'react'
+import ChildComments from './ChildComments'
 
 import moment from 'moment'
 
@@ -8,22 +9,18 @@ import { options } from '../../utils/htmlParserOptions'
 
 import styles from './styles.module.css'
 import classNames from 'classnames'
-import ChildComments from './ChildComments'
 
 interface NewsCommentProps {
     id: number
 }
 
 const SingleComment: FC<NewsCommentProps> = ({ id }) => {
-    const {
-        data: singleCom,
-        error,
-        isLoading,
-    } = SingleNewsAPI.useFetchSingleNewsQuery(id)
+    const { data: singleCom, error } = SingleNewsAPI.useFetchSingleNewsQuery(id)
     const [popup, setPopup] = useState<boolean>(false)
 
     return (
         <>
+            {error && <p>sadcat</p>}
             {singleCom && !singleCom?.deleted && !singleCom?.dead ? (
                 <table className={classNames(styles.zero)}>
                     <thead>
@@ -52,7 +49,7 @@ const SingleComment: FC<NewsCommentProps> = ({ id }) => {
                                 {popup &&
                                     singleCom?.kids &&
                                     singleCom?.kids.map(
-                                        (childId: number, i) => (
+                                        (childId: number) => (
                                             <ul key={childId}>
                                                 <li>
                                                     <ChildComments

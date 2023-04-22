@@ -1,13 +1,11 @@
 import { FC } from 'react'
+import { SingleNewsAPI } from '../../services/SingleNewsService'
+import { Link } from '@tanstack/react-router'
 
 import moment from 'moment'
 
-import { Link } from '@tanstack/react-router'
-
 import styles from './styles.module.css'
 import classNames from 'classnames'
-import Spinner from '../../components/Spinner'
-import { SingleNewsAPI } from '../../services/SingleNewsService'
 
 interface SingleNewsProps {
     id: number
@@ -15,14 +13,11 @@ interface SingleNewsProps {
 }
 
 const SingleNews: FC<SingleNewsProps> = ({ id, i }) => {
-    const {
-        data: news,
-        error,
-        isLoading,
-    } = SingleNewsAPI.useFetchSingleNewsQuery(id)
+    const { data: news, error } = SingleNewsAPI.useFetchSingleNewsQuery(id)
 
     return (
         <>
+            {error && <p>sadcat</p>}
             {news && (
                 <table>
                     <thead>
