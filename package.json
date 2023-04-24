@@ -2,9 +2,10 @@
     "name": "ts-practice",
     "private": true,
     "version": "0.0.0",
+    "homepage": "http://EGRrqq.github.io/hackerNews/",
     "type": "module",
     "scripts": {
-        "start": "vite",
+        "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
         "lint": "npx eslint src",
