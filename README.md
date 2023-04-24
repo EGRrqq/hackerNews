@@ -42,20 +42,22 @@
   
 ## commands
 
-start by running `npm install` inside the project folder
+- start by running `npm install` inside the project folder
 
-`npm run dev` to run the vite dev server
+- `npm run dev` to run the vite dev server
 
 ## project features:
 
-#### infinite scrolling with automatic data fetching
+#### <p align="center">infinite scrolling with automatic data fetching</p>
+<div align="center">
+  <picture>
+    <img src="https://i.ibb.co/X7f8nzY/scroll.gif" alt="infinite scroll" align="center"/>
+  </picture>
+</div>
 
-<picture>
-  <img src="https://i.ibb.co/X7f8nzY/scroll.gif" alt="infinite scroll" align="center"/>
-</picture>
-
-#### сlicking on the news will take you to the news page
-
-<picture>
-  <img src="https://i.ibb.co/nzhhm3S/single-Page.gif" alt="single news page" align="center"/>
-</picture>
+#### <p align="center">сlicking on the news will take you to the news page</p>
+<div align="center" margin-bottom="200px">
+  <picture>
+    <img src="https://i.ibb.co/nzhhm3S/single-Page.gif" alt="single news page" align="center"/>
+  </picture>
+</div>
