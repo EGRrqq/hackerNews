@@ -34,7 +34,7 @@
 
 - <div>
     <picture>
-      <img src="https://i.ibb.co/vs6nWQG/router-logo.jpg" alt="tanstack router logo" align="center"  width="20" height="20"/>
+      <img src="https://i.ibb.co/QfwPwZ3/router-logo.png" alt="tanstack router logo" align="center"  width="20" height="20"/>
     </picture>
     <span>tanstack router</span>
   </div>  
