@@ -38,7 +38,6 @@ const Data: FC<DataProps> = ({ news }) => {
                             <td>{moment(news?.time, 'X').fromNow()} | </td>
                             <td>{news?.kids.length} comments</td>
                         </tr>
-                        {/* <tr><td>comments:</td></tr> */}
                     </tbody>
                 </table>
             )}

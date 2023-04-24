@@ -17,7 +17,6 @@ const NewsListPage = () => {
         refetch,
     } = NewsIdAPI.useFetchAllIDQuery(0)
     const { ref, counter } = useFetching(0, 25, 500)
-    console.log('yoo' ,refetch)
 
     return (
         <>
