@@ -17,13 +17,12 @@ const childComments: FC<NewsCommentProps> = ({ id }) => {
         data: childCom,
         error,
         isLoading,
-        isFetching,
     } = SingleNewsAPI.useFetchSingleNewsQuery(id)
 
     return (
         <>
-            {isLoading || (isFetching && <p>fetching...</p>)}
-            {error && <p>sadcat</p>}
+            {error && <h4>sadcat</h4>}
+            {isLoading && <h4>loading data...</h4>}
             {childCom && !childCom?.deleted && !childCom?.dead ? (
                 <table className={classNames(styles.zero)}>
                     <thead>

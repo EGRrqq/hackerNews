@@ -14,16 +14,15 @@ const NewsListPage = () => {
     const {
         data: newsId,
         error,
-        isLoading,
         refetch,
     } = NewsIdAPI.useFetchAllIDQuery(0)
     const { ref, counter } = useFetching(0, 25, 500)
+    console.log('yoo' ,refetch)
 
     return (
         <>
             <Spinner refetch={refetch} />
 
-            {isLoading && <h3 className={classNames(styles.load)}>loading...</h3>}
             {error && <h4 className={classNames(styles.err)}>sadcat</h4>}
 
             {newsId &&

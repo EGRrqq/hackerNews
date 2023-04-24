@@ -1,5 +1,6 @@
-import { Route, useParams } from '@tanstack/react-router'
+import { Route, useMatch } from '@tanstack/react-router'
 import { rootRoute } from '../__root'
+import { SingleNewsAPI } from '../../services/SingleNewsService'
 import { useFetching } from '../../hooks/useFetching'
 
 import SingleComment from './SingleComment'
@@ -7,23 +8,26 @@ import Data from './Data'
 
 import styles from './styles.module.css'
 import classNames from 'classnames'
-import { SingleNewsAPI } from '../../services/SingleNewsService'
 import Spinner from '../../components/Spinner'
 
 const NewsDataPage = () => {
-    const params: number = useParams()
+    const newsMatch = useMatch({from: '/$itemId'})
+    const id: string = newsMatch.params.itemId
+
     const {
         data: news,
         error,
         isLoading,
         refetch,
-    } = SingleNewsAPI.useFetchSingleNewsQuery(params.itemId)
+    } = SingleNewsAPI.useFetchSingleNewsQuery(Number(id))
+
+
     const { ref, counter } = useFetching(0, 10, 30)
 
     return (
         <>
             <Spinner refetch={refetch} />
-            {isLoading && <h4 className={classNames(styles.load)}>loading...</h4>}
+            {isLoading && <h4 className={classNames(styles.load)}>loading data...</h4>}
             {error && <h4 className={classNames(styles.err)}>sadcat</h4>}
 
             {news && <Data news={news} />}

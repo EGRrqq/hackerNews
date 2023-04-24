@@ -1,6 +1,8 @@
 .container {
     display: flex;
     background: #e48b8b;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.3) inset,
+    0 4px 3px 0 rgba(0, 0, 0, 0.57);
 }
 
 .button {
@@ -39,7 +41,7 @@
         transform: scale(1) rotateZ(0);
     }
     50% {
-        transform: scale(1.5) rotateZ(180deg);
+        transform: scale(1.3) rotateZ(180deg);
     }
     100% {
         transform: scale(1) rotateZ(360deg);

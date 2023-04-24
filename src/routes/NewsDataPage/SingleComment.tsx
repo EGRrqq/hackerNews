@@ -15,12 +15,13 @@ interface NewsCommentProps {
 }
 
 const SingleComment: FC<NewsCommentProps> = ({ id }) => {
-    const { data: singleCom, error } = SingleNewsAPI.useFetchSingleNewsQuery(id)
+    const { data: singleCom, error, isLoading } = SingleNewsAPI.useFetchSingleNewsQuery(id)
     const [popup, setPopup] = useState<boolean>(false)
 
     return (
         <>
-            {error && <p>sadcat</p>}
+            {error && <h4>sadcat</h4>}
+            {isLoading && <h4>loading data...</h4>}
             {singleCom && !singleCom?.deleted && !singleCom?.dead ? (
                 <table className={classNames(styles.zero)}>
                     <thead>

@@ -13,11 +13,12 @@ interface SingleNewsProps {
 }
 
 const SingleNews: FC<SingleNewsProps> = ({ id, i }) => {
-    const { data: news, error } = SingleNewsAPI.useFetchSingleNewsQuery(id)
+    const { data: news, error, isLoading } = SingleNewsAPI.useFetchSingleNewsQuery(id)
 
     return (
         <>
-            {error && <p>sadcat</p>}
+            {error && <h4>sadcat</h4>}
+            {isLoading && <h4>loading data...</h4>}
             {news && (
                 <table>
                     <thead>
