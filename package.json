@@ -2,7 +2,7 @@
     "name": "ts-practice",
     "private": true,
     "version": "0.0.0",
-    "homepage": "http://EGRrqq.github.io/hackerNews",
+    "homepage": "http://EGRrqq.github.io/hackerNews/",
     "type": "module",
     "scripts": {
         "dev": "vite",
