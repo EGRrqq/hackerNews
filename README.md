@@ -1,6 +1,6 @@
 # hackerNews
 
-- <a href="https://egrrqq.github.io/" target="_blank">live app</a> 
+- <a href="https://egrrqq.github.io/hackerNews/" target="_blank">live app</a> 
 
 - <div>
     <span> the project used </span>
