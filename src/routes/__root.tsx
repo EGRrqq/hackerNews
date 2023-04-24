@@ -10,7 +10,7 @@ export const rootRoute = new RootRoute({
             <>
                 <div>
                     <div className={classNames(styles.navbar)}>
-                        {([['/', 'Hacker News']] as const).map(
+                        {([['/hackerNews', 'Hacker News']] as const).map(
                             ([to, label]) => {
                                 return (
                                     <h4 key={to}>

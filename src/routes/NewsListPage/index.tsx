@@ -40,6 +40,6 @@ const NewsListPage = () => {
 
 export const indexRoute = new Route({
     getParentRoute: () => rootRoute,
-    path: '/',
+    path: '/hackerNews',
     component: NewsListPage,
 })
