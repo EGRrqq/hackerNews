@@ -1,8 +1,8 @@
 import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
 import { useParams } from 'react-router-dom'
-import NewsData from './NewsData'
 import { Container, Divider, List, ListItem, Stack } from '@mui/material'
 import NewsComments from './NewsComments'
+import MainData from '../../components/pageData/MainData'
 
 const SingleNewsPage: React.FC = () => {
     const { id } = useParams()
@@ -16,21 +16,9 @@ const SingleNewsPage: React.FC = () => {
 
     return (
         <>
-            {/* <section>
-                <article></article>
-                <section>
-                    <article>
-                        <details>
-                            <summary></summary>
-                            <p></p>
-                        </details>
-                    </article>
-                </section>
-            </section> */}
-
             {isSuccess && (
                 <Container component="section" aria-label="News page">
-                    <NewsData news={news} />
+                    <MainData id={Number(id)} href={news?.url} target="_blank" rel="noreferrer"/>
 
                     <Stack direction="column" component="section" aria-label="Comments list">
                         <List

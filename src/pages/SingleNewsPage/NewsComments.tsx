@@ -1,9 +1,4 @@
 import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
-import ChildComments from './ChildComments'
-
-import parse from 'html-react-parser'
-import { options } from '../../utils/htmlParserOptions'
-import moment from 'moment'
 
 import {
     Box,
@@ -19,10 +14,10 @@ import {
 } from '@mui/material'
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import CommentData from './CommentData'
+import CommentData from '../../components/pageData/CommentData'
 
 type NewsCommentsProps = {
-    id: number
+    id: number;
 }
 
 const NewsComments: React.FC<NewsCommentsProps> = ({ id }) => {
@@ -48,30 +43,6 @@ const NewsComments: React.FC<NewsCommentsProps> = ({ id }) => {
                             component="summary"
                             expandIcon={<ExpandMoreIcon />}
                         >
-                            {/* <Stack component="header">
-                                <Typography variant="body2" component="b">
-                                    {singleCom?.score} points
-                                </Typography>
-
-                                <Typography variant="body2" component="address">
-                                    by <Link rel="author">{singleCom?.by}</Link>
-                                </Typography>
-
-                                <Typography
-                                    variant="body2"
-                                    component="time"
-                                    dateTime={moment(
-                                        singleCom?.time,
-                                        'X'
-                                    ).format()}
-                                >
-                                    {moment(singleCom?.time, 'X').fromNow()}
-                                </Typography>
-                            </Stack>
-                            <Stack component="main">
-                                {parse(singleCom?.text, options)}
-                            </Stack> */}
-
                             <CommentData id={id} />
                         </AccordionSummary>
                         <AccordionDetails>
@@ -92,7 +63,6 @@ const NewsComments: React.FC<NewsCommentsProps> = ({ id }) => {
                                             (childId: number) => (
                                                 <ListItem key={childId}>
                                                     <CommentData id={childId} component='article' />
-
                                                     <Divider />
                                                 </ListItem>
                                             )

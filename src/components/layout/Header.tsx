@@ -10,7 +10,7 @@ import {
 import { Link as RouterLink } from 'react-router-dom'
 import ArticleIcon from '@mui/icons-material/Article'
 
-import ColorModeSwitcher from './ColorModeSwitcher'
+import ColorModeSwitcher from '../elements/ColorModeSwitcher'
 
 const Header: React.FC = () => {
     return (

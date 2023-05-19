@@ -1,18 +1,26 @@
+import { useFetchSingleNewsQuery } from '../../redux/features/NewsService' 
+
 import moment from 'moment'
-import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
 
-import { Stack, Divider, Typography, Box, Link } from '@mui/material'
+import {
+    Stack,
+    LinkProps,
+    LinkBaseProps,
+    Divider,
+    Typography,
+    Box,
+    Link,
+} from '@mui/material'
 
-import { Link as RouterLink } from 'react-router-dom'
+import Fallback from '../feedback/Fallback'
+import ShowError from '../feedback/ShowError'
 
-import Fallback from '../../components/Fallback'
-import ShowError from '../../components/ShowError'
-
-interface SingleNewsProps {
+interface MainDataProps {
     id: number
+    props: LinkProps
 }
 
-const SingleNews: React.FC<SingleNewsProps> = ({ id }) => {
+const MainData: React.FC<MainDataProps> = ({ id, ...props }) => {
     const {
         data: news,
         isError,
@@ -29,11 +37,11 @@ const SingleNews: React.FC<SingleNewsProps> = ({ id }) => {
             ) : (
                 <Box component="article">
                     <Box component="header">
-                        <RouterLink to={`/${id}`}>
+                        <Link {...props}>
                             <Typography variant="body1" component="h2">
                                 {news?.title}
                             </Typography>
-                        </RouterLink>
+                        </Link>
                     </Box>
                     <Stack
                         direction="row"
@@ -63,4 +71,4 @@ const SingleNews: React.FC<SingleNewsProps> = ({ id }) => {
     )
 }
 
-export default SingleNews
+export default MainData

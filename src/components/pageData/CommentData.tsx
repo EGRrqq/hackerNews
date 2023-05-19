@@ -2,14 +2,12 @@ import parse from 'html-react-parser'
 import { options } from '../../utils/htmlParserOptions'
 import moment from 'moment'
 
-import { Stack, Typography, Link } from '@mui/material'
-import { IComment } from '../../types/news'
-import { INews } from '../../types/news'
+import { Stack, StackProps, Typography, Link } from '@mui/material'
 import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
 
 type CommentProps = {
     id: number;
-    props?: JSX.Element | null
+    props?: StackProps<'article', { component: 'article' }>;
 }
 
 const CommentData: React.FC<CommentProps> = ({ id, ...props }) => {

@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 import { Suspense } from 'react'
-import Fallback from './Fallback'
+import Fallback from '../feedback/Fallback'
 import { Container, Stack, Paper } from '@mui/material'
 
 import { red } from '@mui/material/colors';
