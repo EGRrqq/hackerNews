@@ -4,7 +4,7 @@ import moment from 'moment'
 
 import styles from './styles.module.css'
 import classNames from 'classnames'
-import { INews } from '../../types/types'
+import { INews } from '../../types/news'
 
 interface DataProps {
     news: INews

@@ -13,7 +13,7 @@ interface SingleNewsProps {
 }
 
 const SingleNews: FC<SingleNewsProps> = ({ id, i }) => {
-    const { data: news, error, isLoading } = SingleNewsAPI.useFetchSingleNewsQuery(id)
+    const { data: news, error, isLoading, isSuccess } = SingleNewsAPI.useFetchSingleNewsQuery(id)
 
     return (
         <>
@@ -26,7 +26,12 @@ const SingleNews: FC<SingleNewsProps> = ({ id, i }) => {
                             <th>{i}.</th>
                             <th>
                                 <Link
-                                    to="/$itemId"
+                                    activeOptions={
+                                        {
+                                            exact: true
+                                        }
+                                    }
+                                    to="/hackerNews/$itemId"
                                     params={{ itemId: String(news?.id) }}
                                     className={classNames(styles.link)}
                                 >

@@ -11,7 +11,8 @@ import classNames from 'classnames'
 import Spinner from '../../components/Spinner'
 
 const NewsDataPage = () => {
-    const newsMatch = useMatch({from: '/$itemId'})
+    const newsMatch = useMatch({from: '/hackerNews/$itemId'})
+    console.log(newsMatch)
     const id: string = newsMatch.params.itemId
 
     const {
@@ -48,6 +49,6 @@ const NewsDataPage = () => {
 
 export const newsDataRoute = new Route({
     getParentRoute: () => rootRoute,
-    path: '/$itemId',
+    path: '/hackerNews/$itemId',
     component: NewsDataPage,
 })
