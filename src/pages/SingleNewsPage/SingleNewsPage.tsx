@@ -1,7 +1,7 @@
 import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
 import { useParams } from 'react-router-dom'
 import NewsData from './NewsData'
-import { Box, Divider, List, ListItem, Stack } from '@mui/material'
+import { Container, Divider, List, ListItem, Stack } from '@mui/material'
 import NewsComments from './NewsComments'
 
 const SingleNewsPage: React.FC = () => {
@@ -29,10 +29,10 @@ const SingleNewsPage: React.FC = () => {
             </section> */}
 
             {isSuccess && (
-                <Box component="section" aria-label="News page">
+                <Container component="section" aria-label="News page">
                     <NewsData news={news} />
 
-                    <Stack direction="column" component="section">
+                    <Stack direction="column" component="section" aria-label="Comments list">
                         <List
                             component="ol"
                             sx={{ listStyle: 'number', pl: '2.5rem' }}
@@ -48,7 +48,7 @@ const SingleNewsPage: React.FC = () => {
                             ))}
                         </List>
                     </Stack>
-                </Box>
+                </Container>
             )}
         </>
     )

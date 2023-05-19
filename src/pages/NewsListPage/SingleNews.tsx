@@ -44,9 +44,11 @@ const SingleNews: React.FC<SingleNewsProps> = ({ id }) => {
                         <Typography variant="body2" component="b">
                             {news?.score} points
                         </Typography>
+
                         <Typography variant="body2" component="address">
                             by <Link rel="author">{news?.by}</Link>
                         </Typography>
+
                         <Typography
                             variant="body2"
                             component="time"

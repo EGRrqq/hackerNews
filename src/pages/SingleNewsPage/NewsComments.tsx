@@ -1,9 +1,25 @@
 import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
+import ChildComments from './ChildComments'
 
 import parse from 'html-react-parser'
 import { options } from '../../utils/htmlParserOptions'
 import moment from 'moment'
-import ChildComments from './ChildComments'
+
+import {
+    Box,
+    Accordion,
+    AccordionSummary,
+    Stack,
+    AccordionDetails,
+    Typography,
+    Link,
+    List,
+    ListItem,
+    Divider,
+} from '@mui/material'
+
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import CommentData from './CommentData'
 
 type NewsCommentsProps = {
     id: number
@@ -20,46 +36,72 @@ const NewsComments: React.FC<NewsCommentsProps> = ({ id }) => {
 
     return (
         <>
-            {isSuccess && (
-                <article aria-label="News comment">
-                    <details>
-                        <summary>
-                            <header style={{ display: 'inline' }}>
-                                <b>{singleCom?.score} points</b>
-                                <address style={{ display: 'inline' }}>
-                                    by <a rel="author">{singleCom?.by}</a>
-                                </address>
-                                <time
-                                    style={{ display: 'inline' }}
+            {isSuccess && !singleCom?.deleted && !singleCom?.dead && (
+                <Stack
+                    direction="column"
+                    component="article"
+                    aria-label="News comment"
+                >
+                    <Accordion component="details">
+                        <AccordionSummary
+                            sx={{ display: 'flex', flexDirection: 'column' }}
+                            component="summary"
+                            expandIcon={<ExpandMoreIcon />}
+                        >
+                            {/* <Stack component="header">
+                                <Typography variant="body2" component="b">
+                                    {singleCom?.score} points
+                                </Typography>
+
+                                <Typography variant="body2" component="address">
+                                    by <Link rel="author">{singleCom?.by}</Link>
+                                </Typography>
+
+                                <Typography
+                                    variant="body2"
+                                    component="time"
                                     dateTime={moment(
                                         singleCom?.time,
                                         'X'
                                     ).format()}
                                 >
                                     {moment(singleCom?.time, 'X').fromNow()}
-                                </time>
-                            </header>
-                            <main>{parse(singleCom?.text, options)}</main>
-                        </summary>
-                        <article aria-label="News subcomments">
-                            <header>
-                                <h2>comments:</h2>
-                            </header>
-                            <main>
-                                <ol>
+                                </Typography>
+                            </Stack>
+                            <Stack component="main">
+                                {parse(singleCom?.text, options)}
+                            </Stack> */}
+
+                            <CommentData id={id} />
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Box
+                                component="section"
+                                aria-label="News subcomments"
+                            >
+                                <Typography variant="body2" component="h2">
+                                    comments:
+                                </Typography>
+
+                                <List
+                                    component="ol"
+                                    sx={{ listStyle: 'number', pl: '2.5rem' }}
+                                >
                                     {singleCom?.kids &&
                                         singleCom?.kids.map(
                                             (childId: number) => (
-                                                <li key={childId}>
-                                                    <ChildComments id={childId} />
-                                                </li>
+                                                <ListItem key={childId}>
+                                                    <CommentData id={childId} component='article' />
+
+                                                    <Divider />
+                                                </ListItem>
                                             )
                                         )}
-                                </ol>
-                            </main>
-                        </article>
-                    </details>
-                </article>
+                                </List>
+                            </Box>
+                        </AccordionDetails>
+                    </Accordion>
+                </Stack>
             )}
         </>
     )
