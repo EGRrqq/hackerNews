@@ -1,12 +1,6 @@
 import moment from 'moment'
 
-import {
-    Stack,
-    Divider,
-    Typography,
-    Box,
-    Link,
-} from '@mui/material'
+import { Stack, Divider, Typography, Box, Link } from '@mui/material'
 
 import { INews } from '../../types/news'
 
@@ -34,8 +28,7 @@ const NewsData: React.FC<SingleNewsProps> = ({ news }) => {
                     {news?.score} points
                 </Typography>
                 <Typography variant="body2" component="address">
-                    by <a rel="author" />
-                    {news?.by}
+                    by <Link rel="author">{news?.by}</Link>
                 </Typography>
                 <Typography
                     variant="body2"

@@ -1,16 +1,9 @@
 import moment from 'moment'
 import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
 
-import {
-    Stack,
-    Divider,
-    Typography,
-    Box,
-    Alert,
-    AlertTitle,
-} from '@mui/material'
+import { Stack, Divider, Typography, Box, Link } from '@mui/material'
 
-import { Outlet, Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 
 import Fallback from '../../components/Fallback'
 import ShowError from '../../components/ShowError'
@@ -52,8 +45,7 @@ const SingleNews: React.FC<SingleNewsProps> = ({ id }) => {
                             {news?.score} points
                         </Typography>
                         <Typography variant="body2" component="address">
-                            by <a rel="author" />
-                            {news?.by}
+                            by <Link rel="author">{news?.by}</Link>
                         </Typography>
                         <Typography
                             variant="body2"
