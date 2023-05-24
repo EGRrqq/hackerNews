@@ -15,12 +15,12 @@ const NewsList: React.FC = () => {
             <Stack
                 direction="column"
                 component="section"
-                aria-label="News list"
+                aria-label="News list section"
             >
                 <List component="ol" sx={{ listStyle: 'number', pl: '2.5rem' }}>
                     {newsId?.slice(0, 15).map((itemId) => (
-                        <ListItem key={itemId} sx={{ display: 'list-item' }}>
-                            <MainData id={itemId} component={RouterLink} to={`/${itemId}`} />
+                        <ListItem key={itemId} aria-label="News list" sx={{ display: 'list-item' }}>
+                            <MainData id={itemId} component={RouterLink} to={`/news/${itemId}`} />
                             <Divider />
                         </ListItem>
                     ))}

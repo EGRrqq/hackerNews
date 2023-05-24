@@ -1,4 +1,1 @@
-<details>
-    <summary></summary>
-    <p></p>
-</details>
+export { default } from './NotFoundPage'

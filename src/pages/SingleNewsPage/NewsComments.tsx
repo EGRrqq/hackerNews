@@ -15,6 +15,7 @@ import {
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import CommentData from '../../components/pageData/CommentData'
+import NewsSkeleton from '../../components/feedback/NewsSkeleton'
 
 type NewsCommentsProps = {
     id: number;
@@ -29,8 +30,12 @@ const NewsComments: React.FC<NewsCommentsProps> = ({ id }) => {
         isLoading,
     } = useFetchSingleNewsQuery(Number(id))
 
+    // error handling
+
     return (
         <>
+            {isLoading && <NewsSkeleton />}
+
             {isSuccess && !singleCom?.deleted && !singleCom?.dead && (
                 <Stack
                     direction="column"

@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 
-const NotFoundPage: React.FC = () => {
+const AboutPage: React.FC = () => {
     return (
         <Box
             display="flex"
@@ -10,10 +10,10 @@ const NotFoundPage: React.FC = () => {
             minHeight='50vh'
         >
             <Typography variant="body2" component="h2" >
-                NotFound Page
+                About project
             </Typography>
         </Box>
     )
 }
 
-export default NotFoundPage
+export default AboutPage

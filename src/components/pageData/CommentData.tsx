@@ -6,19 +6,21 @@ import { Stack, StackProps, Typography, Link } from '@mui/material'
 import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
 
 type CommentProps = {
-    id: number;
-    props?: StackProps<'article', { component: 'article' }>;
+    id: number
+    props?: StackProps<'article', { component: 'article' }>
 }
 
 const CommentData: React.FC<CommentProps> = ({ id, ...props }) => {
     const { data, isSuccess, isError, error, isLoading } =
         useFetchSingleNewsQuery(Number(id))
 
+    // error handling
+
     return (
         <>
             {isSuccess && !data?.deleted && !data?.dead && (
-                <Stack direction='column' {...props}>
-                    <Stack direction='row' component="header">
+                <Stack direction="column" {...props}>
+                    <Stack direction="row" component="header">
                         <Typography variant="body2" component="b">
                             {data?.score} points
                         </Typography>

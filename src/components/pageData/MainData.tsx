@@ -12,7 +12,7 @@ import {
     Link,
 } from '@mui/material'
 
-import Fallback from '../feedback/Fallback'
+import NewsSkeleton from '../feedback/NewsSkeleton'
 import ShowError from '../feedback/ShowError'
 
 interface MainDataProps {
@@ -25,12 +25,13 @@ const MainData: React.FC<MainDataProps> = ({ id, ...props }) => {
         data: news,
         isError,
         error,
-        isLoading,
+        isLoading,      
     } = useFetchSingleNewsQuery(id)
 
+    
     return (
         <>
-            {isLoading && <Fallback />}
+            {isLoading && <NewsSkeleton />}
 
             {isError ? (
                 <ShowError error={error} />
