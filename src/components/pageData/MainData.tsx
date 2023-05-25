@@ -1,23 +1,40 @@
-import { useFetchSingleNewsQuery } from '../../redux/features/NewsService' 
-
-import moment from 'moment'
+import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
 
 import {
-    Stack,
-    LinkProps,
     LinkBaseProps,
-    Divider,
+    TypographyProps,
+    LinkProps,
     Typography,
     Box,
     Link,
 } from '@mui/material'
 
+import { LinkProps as RouterLinkProps, To } from 'react-router-dom'
+
 import NewsSkeleton from '../feedback/NewsSkeleton'
 import ShowError from '../feedback/ShowError'
+import Data from './Data'
 
-interface MainDataProps {
+// interface MainDataProps {
+//     id: number
+//     props: LinkProps
+// }
+
+type MainDataProps = MainDataWithLink | MainDataWithRouterLink
+
+interface MainDataBasic {
     id: number
-    props: LinkProps
+}
+
+interface MainDataWithLink extends MainDataBasic {
+    href: string;
+    target: "_blank"
+    rel: "noreferrer"
+}
+
+interface MainDataWithRouterLink extends MainDataBasic {
+    component: React.ForwardRefExoticComponent<RouterLinkProps & React.RefAttributes<HTMLAnchorElement>>;
+    to: To
 }
 
 const MainData: React.FC<MainDataProps> = ({ id, ...props }) => {
@@ -25,17 +42,17 @@ const MainData: React.FC<MainDataProps> = ({ id, ...props }) => {
         data: news,
         isError,
         error,
-        isLoading,      
+        isLoading,
+        isSuccess,
     } = useFetchSingleNewsQuery(id)
 
-    
     return (
         <>
             {isLoading && <NewsSkeleton />}
 
-            {isError ? (
-                <ShowError error={error} />
-            ) : (
+            {isError && <ShowError error={error} />}
+
+            {isSuccess && (
                 <Box component="article">
                     <Box component="header">
                         <Link {...props}>
@@ -44,28 +61,8 @@ const MainData: React.FC<MainDataProps> = ({ id, ...props }) => {
                             </Typography>
                         </Link>
                     </Box>
-                    <Stack
-                        direction="row"
-                        divider={<Divider orientation="vertical" flexItem />}
-                        spacing={1}
-                        component="footer"
-                    >
-                        <Typography variant="body2" component="b">
-                            {news?.score} points
-                        </Typography>
 
-                        <Typography variant="body2" component="address">
-                            by <Link rel="author">{news?.by}</Link>
-                        </Typography>
-
-                        <Typography
-                            variant="body2"
-                            component="time"
-                            dateTime={moment(news?.time, 'X').format()}
-                        >
-                            {moment(news?.time, 'X').fromNow()}
-                        </Typography>
-                    </Stack>
+                    <Data spacing={1} component="footer" data={news} />
                 </Box>
             )}
         </>

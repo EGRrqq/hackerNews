@@ -1,43 +1,45 @@
 import parse from 'html-react-parser'
 import { options } from '../../utils/htmlParserOptions'
-import moment from 'moment'
 
-import { Stack, StackProps, Typography, Link } from '@mui/material'
+import { Stack } from '@mui/material'
 import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
+import Data from './Data'
+import NewsSkeleton from '../feedback/NewsSkeleton'
+import ShowError from '../feedback/ShowError'
 
-type CommentProps = {
+interface CommentProps {
     id: number
-    props?: StackProps<'article', { component: 'article' }>
+    component?: 'article'
 }
 
 const CommentData: React.FC<CommentProps> = ({ id, ...props }) => {
-    const { data, isSuccess, isError, error, isLoading } =
-        useFetchSingleNewsQuery(Number(id))
-
-    // error handling
+    const {
+        data: comment,
+        isSuccess,
+        isError,
+        error,
+        isLoading,
+    } = useFetchSingleNewsQuery(id)
 
     return (
         <>
-            {isSuccess && !data?.deleted && !data?.dead && (
+            {isLoading && <NewsSkeleton />}
+
+            {isError && <ShowError error={error} />}
+
+            {isSuccess && comment && !comment?.deleted && !comment?.dead && (
                 <Stack direction="column" {...props}>
-                    <Stack direction="row" component="header">
-                        <Typography variant="body2" component="b">
-                            {data?.score} points
-                        </Typography>
+                    <Data
+                        display="none"
+                        spacing={0.5}
+                        marginY={1.5}
+                        component="header"
+                        data={comment}
+                    />
 
-                        <Typography variant="body2" component="address">
-                            by <Link rel="author">{data?.by}</Link>
-                        </Typography>
-
-                        <Typography
-                            variant="body2"
-                            component="time"
-                            dateTime={moment(data?.time, 'X').format()}
-                        >
-                            {moment(data?.time, 'X').fromNow()}
-                        </Typography>
+                    <Stack component="main">
+                        {parse(comment?.text, options)}
                     </Stack>
-                    <Stack component="main">{parse(data?.text, options)}</Stack>
                 </Stack>
             )}
         </>

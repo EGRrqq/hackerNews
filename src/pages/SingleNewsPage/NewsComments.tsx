@@ -1,4 +1,10 @@
+import React from 'react'
+
 import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
+
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import CommentData from '../../components/pageData/CommentData'
+import NewsSkeleton from '../../components/feedback/NewsSkeleton'
 
 import {
     Box,
@@ -13,12 +19,8 @@ import {
     Divider,
 } from '@mui/material'
 
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import CommentData from '../../components/pageData/CommentData'
-import NewsSkeleton from '../../components/feedback/NewsSkeleton'
-
 type NewsCommentsProps = {
-    id: number;
+    id: number
 }
 
 const NewsComments: React.FC<NewsCommentsProps> = ({ id }) => {
@@ -44,14 +46,21 @@ const NewsComments: React.FC<NewsCommentsProps> = ({ id }) => {
                 >
                     <Accordion component="details">
                         <AccordionSummary
-                            sx={{ display: 'flex', flexDirection: 'column' }}
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                placeItems: 'flex-start',
+                            }}
                             component="summary"
                             expandIcon={<ExpandMoreIcon />}
+                            // aria-controls="panel1d-content"
+                            // id="panel1d-header"
                         >
                             <CommentData id={id} />
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Box
+                            <Stack
+                                direction="column"
                                 component="section"
                                 aria-label="News subcomments"
                             >
@@ -61,19 +70,34 @@ const NewsComments: React.FC<NewsCommentsProps> = ({ id }) => {
 
                                 <List
                                     component="ol"
-                                    sx={{ listStyle: 'number', pl: '2.5rem' }}
+                                    sx={{ listStyle: 'square', pl: '2.5rem' }}
                                 >
-                                    {singleCom?.kids &&
+                                    {(singleCom?.kids &&
                                         singleCom?.kids.map(
                                             (childId: number) => (
-                                                <ListItem key={childId}>
-                                                    <CommentData id={childId} component='article' />
+                                                <React.Fragment key={childId}>
+                                                    <ListItem>
+                                                        <CommentData
+                                                            id={childId}
+                                                            component="article"
+                                                        />
+                                                    </ListItem>
                                                     <Divider />
-                                                </ListItem>
+                                                </React.Fragment>
                                             )
-                                        )}
+                                        )) || (
+                                        <>
+                                            <Typography
+                                                variant="body2"
+                                                marginBottom={1.5}
+                                            >
+                                                no comments yet...
+                                            </Typography>
+                                            <Divider />
+                                        </>
+                                    )}
                                 </List>
-                            </Box>
+                            </Stack>
                         </AccordionDetails>
                     </Accordion>
                 </Stack>

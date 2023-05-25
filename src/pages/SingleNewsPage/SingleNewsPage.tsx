@@ -1,9 +1,13 @@
+import React from 'react'
+
 import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
 import { useParams } from 'react-router-dom'
-import { Container, Divider, List, ListItem, Stack } from '@mui/material'
+
 import NewsComments from './NewsComments'
 import MainData from '../../components/pageData/MainData'
 import NewsSkeleton from '../../components/feedback/NewsSkeleton'
+
+import { Container, Divider, List, ListItem, Stack, Box } from '@mui/material'
 
 const SingleNewsPage: React.FC = () => {
     const { id } = useParams()
@@ -16,6 +20,7 @@ const SingleNewsPage: React.FC = () => {
     } = useFetchSingleNewsQuery(Number(id))
 
     // error handling
+    // no comments text
 
     return (
         <>
@@ -23,12 +28,14 @@ const SingleNewsPage: React.FC = () => {
 
             {isSuccess && (
                 <Container component="section" aria-label="News page">
-                    <MainData
-                        id={Number(id)}
-                        href={news?.url}
-                        target="_blank"
-                        rel="noreferrer"
-                    />
+                    <Box margin={3}>
+                        <MainData
+                            id={Number(id)}
+                            href={news?.url}
+                            target="_blank"
+                            rel="noreferrer"
+                        />
+                    </Box>
 
                     <Stack
                         direction="column"
@@ -41,13 +48,13 @@ const SingleNewsPage: React.FC = () => {
                         >
                             {news?.kids &&
                                 news?.kids.slice(0, 15).map((itemId) => (
-                                    <ListItem
-                                        key={itemId}
-                                        sx={{ display: 'list-item' }}
-                                    >
-                                        <NewsComments id={itemId} />
-                                        <Divider />
-                                    </ListItem>
+                                    <React.Fragment key={itemId}>
+                                        <ListItem sx={{ display: 'list-item' }}>
+                                            <NewsComments id={itemId} />
+                                        </ListItem>
+
+                                        <Divider aria-hidden="true" />
+                                    </React.Fragment>
                                 ))}
                         </List>
                     </Stack>
