@@ -7,7 +7,7 @@
     </a>
  </div>
 
-## stack
+<!-- ## stack
 
 - <div>
     <picture>
@@ -35,7 +35,7 @@
       <img src="https://i.ibb.co/QfwPwZ3/router-logo.png" alt="tanstack router logo" align="center"  width="20" height="20"/>
     </picture>
     <span>tanstack router</span>
-  </div>  
+  </div>   -->
 
   
 ## commands
