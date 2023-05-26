@@ -10,6 +10,9 @@ export const useFetching = (
 
     const { ref, inView } = useInView({
         threshold: 0.5,
+        trackVisibility: true,
+        delay: 300,
+        rootMargin: '384px'
     })
 
     useEffect(() => {
