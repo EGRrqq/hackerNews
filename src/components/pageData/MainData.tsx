@@ -45,11 +45,9 @@ const MainData: React.FC<MainDataProps> = ({ id, ...props }) => {
             {isSuccess && (
                 <Box component="article" aria-label="News article">
                     <Box component="header" aria-label="News title">
-                        <Link {...props}>
-                            <Typography variant="body1" component="h2">
-                                {news?.title}
-                            </Typography>
-                        </Link>
+                        <Typography variant="body1" component="h2">
+                            <Link {...props}>{news?.title}</Link>
+                        </Typography>
                     </Box>
 
                     <Data
