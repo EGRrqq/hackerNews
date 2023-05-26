@@ -34,10 +34,11 @@ const CommentData: React.FC<CommentProps> = ({ id, ...props }) => {
                         spacing={0.5}
                         marginY={1.5}
                         component="header"
+                        aria-label="Additional information about the commentary"
                         data={comment}
                     />
 
-                    <Stack component="main">
+                    <Stack component="main" aria-label='Commentary'>
                         {parse(comment?.text, options)}
                     </Stack>
                 </Stack>

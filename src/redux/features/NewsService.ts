@@ -5,7 +5,7 @@ export const newsApi = createApi({
     reducerPath: 'newsApi',
     baseQuery: fetchBaseQuery({baseUrl: 'https://hacker-news.firebaseio.com/v0/'}),
     endpoints: (build) => ({
-        fetchAllId: build.query<number[], _>({
+        fetchAllId: build.query<number[], void>({
             query: () => `/topstories.json`
         }),
         fetchSingleNews: build.query<INews & IComment, number>({

@@ -4,8 +4,8 @@ import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
 import { useParams } from 'react-router-dom'
 
 import NewsComments from './NewsComments'
-import MainData from '../../components/pageData/MainData'
-import NewsSkeleton from '../../components/feedback/NewsSkeleton'
+import { MainData } from '../../components/pageData'
+import { NewsSkeleton, ShowError } from '../../components/feedback'
 
 import { Container, Divider, List, ListItem, Stack, Box } from '@mui/material'
 
@@ -19,12 +19,13 @@ const SingleNewsPage: React.FC = () => {
         isLoading,
     } = useFetchSingleNewsQuery(Number(id))
 
-    // error handling
     // no comments text
 
     return (
         <>
             {isLoading && <NewsSkeleton />}
+
+            {isError && <ShowError error={error} />}
 
             {isSuccess && (
                 <Container component="section" aria-label="News page">

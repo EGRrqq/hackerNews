@@ -3,17 +3,15 @@ import React from 'react'
 import { useFetchSingleNewsQuery } from '../../redux/features/NewsService'
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import CommentData from '../../components/pageData/CommentData'
-import NewsSkeleton from '../../components/feedback/NewsSkeleton'
+import { CommentData } from '../../components/pageData'
+import { NewsSkeleton, ShowError } from '../../components/feedback'
 
 import {
-    Box,
     Accordion,
     AccordionSummary,
     Stack,
     AccordionDetails,
     Typography,
-    Link,
     List,
     ListItem,
     Divider,
@@ -32,11 +30,11 @@ const NewsComments: React.FC<NewsCommentsProps> = ({ id }) => {
         isLoading,
     } = useFetchSingleNewsQuery(Number(id))
 
-    // error handling
-
     return (
         <>
             {isLoading && <NewsSkeleton />}
+
+            {isError && <ShowError error={error} />}
 
             {isSuccess && !singleCom?.deleted && !singleCom?.dead && (
                 <Stack
@@ -44,17 +42,14 @@ const NewsComments: React.FC<NewsCommentsProps> = ({ id }) => {
                     component="article"
                     aria-label="News comment"
                 >
-                    <Accordion component="details">
+                    <Accordion>
                         <AccordionSummary
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
                                 placeItems: 'flex-start',
                             }}
-                            component="summary"
                             expandIcon={<ExpandMoreIcon />}
-                            // aria-controls="panel1d-content"
-                            // id="panel1d-header"
                         >
                             <CommentData id={id} />
                         </AccordionSummary>
