@@ -38,7 +38,10 @@ const CommentData: React.FC<CommentProps> = ({ id, ...props }) => {
                         data={comment}
                     />
 
-                    <Stack component="main" aria-label='Commentary'>
+                    <Stack
+                        component="main"
+                        aria-label="Commentary"
+                    >
                         {parse(comment?.text, options)}
                     </Stack>
                 </Stack>

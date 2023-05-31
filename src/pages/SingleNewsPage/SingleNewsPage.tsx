@@ -6,7 +6,7 @@ import { useFetching } from '../../hooks/useFetching'
 
 import NewsComments from './NewsComments'
 import { MainData } from '../../components/pageData'
-import { NewsSkeleton, ShowError } from '../../components/feedback'
+import { ShowError } from '../../components/feedback'
 
 import { Container, Divider, List, ListItem, Stack, Box } from '@mui/material'
 
@@ -17,17 +17,12 @@ const SingleNewsPage: React.FC = () => {
         isSuccess,
         isError,
         error,
-        isLoading,
     } = useFetchSingleNewsQuery(Number(id))
 
     const { ref, counter } = useFetching(0, 15, 150)
 
-    // no comments text
-
     return (
         <>
-            {/* {isLoading && <NewsSkeleton />} */}
-
             {isError && <ShowError error={error} />}
 
             {isSuccess && (
