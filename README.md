@@ -1,5 +1,7 @@
 # hackerNews
-
+-   <a href="https://egrrqq.github.io/hackerNews/" target="_blank">
+      Live Version
+    </a>
 - <div>
     <span> the project used </span>
     <a href="https://github.com/HackerNews/API" target="_blank">
@@ -7,7 +9,7 @@
     </a>
  </div>
 
-<!-- ## stack
+## stack
 
 - <div>
     <picture>
@@ -35,7 +37,7 @@
       <img src="https://i.ibb.co/QfwPwZ3/router-logo.png" alt="tanstack router logo" align="center"  width="20" height="20"/>
     </picture>
     <span>tanstack router</span>
-  </div>   -->
+  </div> 
 
   
 ## commands
@@ -49,13 +51,13 @@
 #### <p align="center">infinite scrolling with automatic data fetching</p>
 <div align="center">
   <picture>
-    <img src="https://i.ibb.co/X7f8nzY/scroll.gif" alt="infinite scroll" align="center"/>
+    <img src="https://EGRrqq.github.io/picx-images-hosting/HN_assets/scroll.2h81xigle7.gif" alt="infinite scroll" align="center"/>
   </picture>
 </div>
 
 #### <p align="center">сlicking on the news will take you to the news page</p>
 <div align="center" margin-bottom="200px">
   <picture>
-    <img src="https://i.ibb.co/nzhhm3S/single-Page.gif" alt="single news page" align="center"/>
+    <img src="https://EGRrqq.github.io/picx-images-hosting/HN_assets/single-Page.4qr2h01bv7.gif" alt="single news page" align="center"/>
   </picture>
 </div>
